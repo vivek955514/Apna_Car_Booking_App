@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Cars</title>
+		<meta charset="utf-8">
+		<meta name = "format-detection" content = "telephone=no" />
+		<link rel="icon" href="images/favicon.ico">
+		
+    <!-- Correct Thymeleaf Static Resource Mapping -->
+    <link rel="icon" th:href="@{/images/favicon.ico}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" />
+
+    <link rel="stylesheet" th:href="@{/css/touchTouch.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/jquery-migrate-1.2.1.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/superfish.js}"></script>
+    <script th:src="@{/js/jquery.ui.totop.js}"></script>
+    <script th:src="@{/js/jquery.equalheights.js}"></script>
+    <script th:src="@{/js/jquery.mobilemenu.js}"></script>
+    <script th:src="@{/js/jquery.easing.1.3.js}"></script>
+    <script th:src="@{/js/touchTouch.jquery.js}"></script>
+
+		<script>
+			$(document).ready(function(){
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				$('.gallery a.gal').touchTouch();
+			});
+		</script>
+		
+	</head>
+	<body class="" id="top">
+		<div class="main">
+		
+<
+<!--==============================Content=================================-->
+		
+<div class="content">
+
+    <div class="container_12">
+
+        <!-- Car Details Section -->
+        <div class="grid_12">
+            <h3 th:text="${car.carName}">Car Name</h3>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="grid_6">
+            <!-- Car Image -->
+            <img th:src="@{/mycar/{img}(img=${car.carImage})}"
+                 alt="Car Image" style="width:50%; border-radius:10px;">
+        </div>
+
+        <div class="grid_6">
+
+            <h3>Car Information</h3>
+
+            <p><strong>Category:</strong> <span th:text="${car.category}"></span></p>
+            <p><strong>Brand:</strong> <span th:text="${car.brand}"></span></p>
+            <p><strong>Model:</strong> <span th:text="${car.model}"></span></p>
+            <p><strong>Price Per Day:</strong> $<span th:text="${car.price}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${car.status}"></span></p>
+
+            <p><strong>Description:</strong></p>
+            <p th:text="${car.description}"></p>
+
+            <!-- Book Now Button -->
+            <div class="grid_6">
+    <p><strong>Status:</strong> <span th:text="${car.status}"></span></p>
+
+    <div th:if="${car.status == 'Available'}">
+        <a th:href="@{/book-car/{id}(id=${car.id})}" class="btn btn-primary" 
+           style="margin-top:20px; display:inline-block;">
+           Book Now
+        </a>
+    </div>
+
+    <div th:unless="${car.status == 'Available'}">
+        <button class="btn" disabled 
+                style="margin-top:20px; display:inline-block; background-color: #ccc; cursor: not-allowed;">
+           Already Booked
+        </button>
+    </div>
+</div>
+        </div>
+
+        <div class="clear"></div>
+
+        <!-- Back Button -->
+        <div class="grid_12" style="margin-top:5px;">
+            <a href="/cars" class="btn">Back to Cars</a>
+        </div>
+
+    </div>
+</div>
+<!--==============================footer=================================-->
+	<div th:insert="~{fragments/footer.html}" ></div>
+		
+<!--==============================footer=================================-->
+		
+	</body>
+</html>

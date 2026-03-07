@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+	<head>
+		<title>carbook</title>
+		<meta charset="utf-8">
+		<meta name = "format-detection" content = "telephone=no" />
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<link rel="stylesheet" th:href="@{/booking/css/booking.css}">
+<link rel="stylesheet" th:href="@{/css/camera.css}">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+		<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/jquery-migrate-1.2.1.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/superfish.js}"></script>
+<script th:src="@{/js/jquery.ui.totop.js}"></script>
+<script th:src="@{/js/jquery.equalheights.js}"></script>
+<script th:src="@{/js/jquery.mobilemenu.js}"></script>
+<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/camera.js}"></script>
+<script th:src="@{/js/jquery.mobile.customized.min.js}"></script>
+<script th:src="@{/booking/js/booking.js}"></script>
+		<script>
+			$(document).ready(function(){
+				jQuery('#camera_wrap').camera({
+					loader: false,
+					pagination: false ,
+					minHeight: '444',
+					thumbnails: false,
+					height: '28.28125%',
+					caption: true,
+					navigation: true,
+					fx: 'mosaic'
+				});
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+		
+		
+	</head>
+	<body class="page1" id="top">
+
+		<div class="main">
+		
+		
+<h3 style="text-align:center;">Booking Form</h3>
+			<div class="content">
+				<div class="container_12">
+					<div class="grid_5">
+						
+						 
+						<h4 th:text="${message}" style="color: blue; font-size: 20px; margin-bottom: 10px;"></h4>
+
+						    <div class="clear"></div>
+
+        <div class="grid_6">
+            <img th:src="@{/mycar/{img}(img=${car.carImage})}"
+                 alt="Car Image" style="width:40%; border-radius:10px;">
+        </div>
+
+        <div class="grid_6">
+
+            <h3 th:text="${car.carName}">Car Name</h3>
+            <p><strong>Price Per Day:</strong> $<span th:text="${car.price}"></span></p>
+						   
+						<form  id="bookingForm"  th:action="@{/booking-form}" method="post" th:object="${bookingForm}" >
+						
+						            <input type="hidden" name="id" th:field="*{carId}" th:value="${car.id}" />
+							<div class="fl1">
+							
+							
+							
+								<div class="tmInput">
+									<input name="name" th:value="${bookingForm.name}"   th:field="*{name}" placeHolder="Name:" type="text" >
+									
+									   <span   style="color: red; font-size: 14px; margin-top: 3px; display: block;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+								</div>
+								
+								<div class="tmInput">
+									<input name="from"  th:value="${bookingForm.from}" placeHolder="From:" type="text" data-constraints="@NotEmpty @Required ">
+									
+									  <span   style="color: red; font-size: 14px; margin-top: 3px; display: block;" th:if="${#fields.hasErrors('from')}" th:errors="*{from}"></span>
+								</div>
+							</div>
+							
+							
+							<div class="fl1">
+								<div class="tmInput">
+								
+									<input name="email" th:value="${bookingForm.email}" placeHolder="Email:" type="text" data-constraints="@NotEmpty @Required @Email">
+									  <span    style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+								</div>
+								<div class="tmInput mr0">
+									<input name="to" th:value="${bookingForm.to}" placeHolder="To:" type="text" data-constraints="@NotEmpty @Required">
+									  <span   style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('to')}" th:errors="*{to}"></span>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<strong>Time</strong>
+							<div class="tmInput">
+								<input name="time" th:value="${bookingForm.time}" placeHolder="" type="time" >
+								  <span   style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
+							</div>
+							<div class="clear"></div>
+							<strong>Date</strong>
+							<label >
+								<input type="date" name="date"  th:value="${bookingForm.date}"	placeHolder='20/05/2014' data-constraints="@NotEmpty @Required @Date">
+								  <span   style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+							</label>
+							<div class="clear"></div>
+							
+							 
+							<div class="tmRadio">
+							
+								<p>Comfort</p>
+								<input name="comfort" type="radio"  value="cheap" th:checked="${bookingForm.comfort=='cheap'}" id="tmRadio0" data-constraints='@RadioGroupChecked(name="Comfort", groups=[RadioGroup])' checked/>
+								 
+								<span>Cheap</span>
+								<input name="comfort" type="radio" value="standard"  th:checked="${bookingForm.comfort=='standard'}" id="tmRadio1" data-constraints='@RadioGroupChecked(name="Comfort", groups=[RadioGroup])' />
+								  
+								<span>Standart</span>
+								<input name="comfort" type="radio" value="lux"  th:checked="${bookingForm.comfort=='lux'}" id="tmRadio2" data-constraints='@RadioGroupChecked(name="Comfort", groups=[RadioGroup])' />
+								 <span     style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('comfort')}" th:errors="*{comfort}"></span>
+								<span>Lux</span>
+							</div>
+							<div class="clear"></div>
+							
+							<div class="fl1 fl2">
+								<em>Adult</em>
+								<select name="adult" class="tmSelect auto" data-class="tmSelect tmSelect2" data-constraints="">
+									
+									<option  >1</option>
+									<option th:selected="${bookingForm.adult==1}" >1</option>
+									<option th:selected="${bookingForm.adult==2}">2</option>
+									<option th:selected="${bookingForm.adult==3}" >3</option>
+									<option th:selected="${bookingForm.adult==4}" >4</option>
+									<option th:selected="${bookingForm.adult==5}">5</option>
+								</select>
+								<div class="clear height1"></div>
+								
+							  <span  style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('adult')}" th:errors="*{adult}"></span>
+							  
+							</div>
+							
+							
+							<div class="fl1 fl2">
+								<em>Children</em>
+								<select name="children" class="tmSelect auto" data-class="tmSelect tmSelect2" data-constraints="">
+									
+									 <option>0</option>
+									<option th:selected="${bookingForm.children==0}">0</option>
+									<option th:selected="${bookingForm.children==1}" >1</option>
+									<option th:selected="${bookingForm.children==2}" >2</option>
+									<option th:selected="${bookingForm.children==3}">3</option>
+									<option th:selected="${bookingForm.children==4}">4</option>
+								</select>
+								
+								  <span  style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('children')}" th:errors="*{children}"></span>
+							  
+							</div>
+							<div class="clear"></div>
+							
+							<div class="tmTextarea">
+								<textarea name="message"  th:text="${bookingForm.message}" placeHolder="Message" data-constraints='@NotEmpty @Required @Length(min=20,max=999999)'></textarea>
+								  <span     style="color: red; font-size: 14px; margin-top: 3px; display: block;"  th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
+							</div>
+							 <button class="btn" type="submit">Send</button>
+						</form>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		
+<!--==============================footer=================================-->
+	
+		<div th:insert="~{fragments/footer.html}" ></div>
+<!--==============================footer=================================-->
+		
+		
+		<script>
+			$(function (){
+				$('#bookingForm').bookingForm({
+					ownerEmail: '#'
+				});
+			})
+			$(function() {
+				$('#bookingForm input, #bookingForm textarea').placeholder();
+			});
+		</script>
+	</body>
+</html>

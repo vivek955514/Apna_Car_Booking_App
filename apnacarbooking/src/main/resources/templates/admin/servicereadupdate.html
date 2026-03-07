@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Services | Admin</title>
+    <link rel="stylesheet" href="/customcss/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <a href="dashboard" class="btn-home">← ADMIN HOME</a>
+        
+        <h2 style="text-align:center; margin-bottom: 10px;">Managed Services</h2>
+        <p style="text-align:center; color: #7f8c8d;">Add, update or remove company services from this panel.</p>
+
+        <div th:if="${msg}" class="alert-msg" style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; text-align: center; margin-top: 15px;">
+            <span th:text="${msg}"></span>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Service Title</th>
+                    <th>Description</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="service : ${allservices}">
+                    <td th:text="${service.id}" style="font-weight: bold;"></td>
+
+                    <td>
+                        <img th:src="@{/myservice/{imagename}(imagename=${service.image})}" 
+                             alt="Service Image" class="service-img">
+                    </td>
+
+                    <td th:text="${service.title}" style="font-weight: 600; color: #2c3e50;"></td>
+                    
+                    <td class="service-desc" th:text="${service.description}"></td>
+
+                    <td style="text-align: center; white-space: nowrap;">
+                        <a th:href="@{/admin/editService/{id}(id=${service.id})}" class="btn-update">Update</a>
+                        <a th:href="@{/admin/deleteService/{id}(id=${service.id})}" 
+                           class="btn-delete"
+                           onclick="return confirm('Are you sure to delete this service?')">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+    <link rel="stylesheet" th:href="@{/customcss/addform.css}">
+</head>
+<body>
+
+    <div class="form-wrapper">
+        <h2 style="text-align:center;">Add New Car</h2>
+        <a href="dashboard">ADMIN HOME</a>
+
+        <h2 th:if="${msg}" th:text="${msg}"></h2>
+
+        <form action="addCar" method="post" enctype="multipart/form-data"
+              class="p-4 border rounded shadow-sm">
+
+            <div class="input-group-space">
+                <label class="form-label">Car Image</label>
+                <input type="file" name="carImage" accept="image/*" class="form-control" required>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select" required>
+                    <option value="">Select Category</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Lux">Lux</option>
+                </select>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Car Name</label>
+                <input type="text" name="carName" class="form-control" placeholder="Enter car name" required>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Brand</label>
+                <input type="text" name="brand" class="form-control" placeholder="e.g., Toyota, BMW" required>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Model</label>
+                <input type="text" name="model" class="form-control" placeholder="e.g., 2021" required>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Price Per Day ($)</label>
+                <input type="number" name="price" class="form-control" placeholder="e.g., 75" required>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="3"
+                          placeholder="Short description of the car"></textarea>
+            </div>
+
+            <div class="input-group-space">
+                <label class="form-label">Status</label>
+                <select name="status" class="form-select" required>
+                    <option value="Available">Available</option>
+                    <option value="Booked">Booked</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Add Car</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

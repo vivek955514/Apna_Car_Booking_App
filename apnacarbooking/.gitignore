@@ -1,0 +1,72 @@
+# ===============================
+# Maven
+# ===============================
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Allow target folders inside src if needed
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ===============================
+# Spring Boot Sensitive Config
+# ===============================
+application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+.env
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# STS / Eclipse
+# ===============================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# ===============================
+# IntelliJ IDEA
+# ===============================
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# ===============================
+# NetBeans
+# ===============================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# Allow build folders inside src if needed
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ===============================
+# VS Code
+# ===============================
+.vscode/
+
+# ===============================
+# OS Files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Misc
+# ===============================
+HELP.md

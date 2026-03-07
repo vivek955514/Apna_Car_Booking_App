@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Service</title>
+    <link rel="stylesheet" th:href="@{/customcss/editforms.css}">
+</head>
+<body class="edit-body">
+
+<div class="edit-card">
+    <h2 class="edit-title">Edit Service</h2>
+    <a href="/admin/dashboard" class="home-link">← ADMIN HOME</a>
+
+    <form th:action="@{/admin/updateService}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${service.id}">
+
+        <div class="current-image-wrapper">
+            <p>Current Service Image</p>
+            <img th:src="@{'/myservice/' + ${service.image}}" class="preview-img">
+        </div>
+
+        <div class="form-section">
+            <label>Upload New Image (optional):</label>
+            <input type="file" name="imageFile" class="admin-file">
+        </div>
+
+        <div class="form-section">
+            <label>Service Title:</label>
+            <input type="text" name="title" class="admin-input" th:value="${service.title}" required>
+        </div>
+
+        <div class="form-section">
+            <label>Service Description:</label>
+            <textarea name="description" class="admin-textarea" rows="4" required th:text="${service.description}"></textarea>
+        </div>
+
+        <button type="submit" class="btn-update-action">Update Service Details</button>
+    </form>
+</div>
+
+</body>
+</html>

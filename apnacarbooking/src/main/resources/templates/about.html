@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>About</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<link rel="icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.js"></script>
+<script src="js/script.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/jquery.ui.totop.js"></script>
+<script src="js/jquery.equalheights.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script>
+	$(document).ready(function() {
+		$().UItoTop({
+			easingType : 'easeOutQuart'
+		});
+	});
+</script>
+  
+  <style>
+    .profile-photo {
+        width: 220px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        float: left;
+        margin-right: 20px;
+    }
+</style>
+</head>
+<body class="" id="top">
+	<div class="main">
+
+		<!--==============================header-start=================================-->
+		<div th:insert="~{fragments/header.html}"></div>
+
+		<!--==============================header=================================-->
+
+		<!--==============================Content=================================-->
+		<div class="content">
+			<div class="ic"></div>
+			<div class="container_12">
+				<div class="grid_7">
+					<h3>A Few Words About Us</h3>
+					<img src="/images/my-real-photo.png" alt="" 
+						 class="profile-photo"> 
+					<div class="extra_wrapper">
+						<div class="text1 color2"></div>
+						<p>
+							<span style="font-weight: bold; color: #d9534f;"> At Apna
+								Car Booking </span> we believe that travel should be simple,
+							convenient, and enjoyable. Our platform is designed to help you
+							book reliable, affordable, and comfortable cars for any
+							journey—whether it's a quick city ride, an airport pickup, or an
+							outstation trip.
+						</p>
+						<span class="color1"></span>
+					</div>
+					<div class="clear cl1"></div>
+					<p>Still exploring your options? Feel free to browse through
+						our wide range of car choices, hand-picked to suit every need—from
+						budget-friendly hatchbacks to premium sedans and spacious SUVs.</p>
+
+					We focus on making your experience smooth and stress-free. Our easy
+					booking process, dedicated customer support, and well-maintained
+					vehicles ensure you get the best ride every time.
+
+
+				</div>
+				<div class="grid_4 prefix_1">
+					<h3>Why Choose Us</h3>
+					<ul class="list li">
+						<li class="list_count">1</li>
+						<li class="extra_wrapper">
+							<div class="text1 color2">
+								<a href="#">Affordable & Transparent Pricing</a>
+							</div> Enjoy budget-friendly rides with absolutely no hidden charges.
+							At Apna Car Booking, we prioritize honesty and clarity so you
+							always know what you're paying for.
+						</li>
+					</ul>
+					<ul class="list li">
+						<li class="list_count">2</li>
+						<li class="extra_wrapper">
+							<div class="text1 color2">
+								<a href="#">Reliable & Well-Maintained Cars</a>
+							</div> All our vehicles are regularly serviced and inspected to ensure
+							safe, smooth, and comfortable travel—no matter how long the
+							journey.
+						</li>
+					</ul>
+					<ul class="list li">
+						<li class="list_count">3</li>
+						<li class="extra_wrapper">
+							<div class="text1 color2">
+								<a href="#">Professional & Trained Drivers</a>
+							</div> Our expert drivers are courteous, punctual, and well-trained to
+							give you a reliable and hassle-free travel experience every time.
+						</li>
+					</ul>
+					<ul class="list li">
+						<li class="list_count">4</li>
+						<li class="extra_wrapper">
+							<div class="text1 color2">
+								<a href="#">Easy & Fast Booking Process</a>
+							</div> Book your ride in just a few clicks. Our user-friendly system
+							ensures a quick, seamless, and convenient booking experience for
+							everyone.
+						</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div class="grid_12">
+					<h3 class="h3__ind1">Testimonials</h3>
+				</div>
+				<div class="grid_4">
+					<blockquote class="bq1">
+						<p>
+							<i>Excellent service! Booking a car was super easy, and the
+								vehicle was in perfect condition. The driver was polite and on
+								time. I will definitely use this service again... </i>
+						</p>
+						<div class="color2">Ansh Rai</div>
+					</blockquote>
+				</div>
+				<div class="grid_4">
+					<blockquote class="bq1">
+						<p>
+							<i>I booked an airport drop at 4 AM, and the car arrived
+								exactly on time. Smooth ride, clean car, and very professional
+								service. Highly recommended!... </i>
+						</p>
+						<div class="color2">Tanish Rai</div>
+					</blockquote>
+				</div>
+				<div class="grid_4">
+					<blockquote class="bq1">
+						<p>
+							<i>The self-drive option is amazing. The car was well
+								maintained and delivered right to my doorstep. Loved the whole
+								experience—very convenient and affordable....</i>
+						</p>
+						<div class="color2">Deepak</div>
+					</blockquote>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!--==============================footer=================================-->
+	<div th:insert="~{fragments/footer.html}"></div>
+	<!--==============================footer=================================-->
+
+
+
+</body>
+</html>

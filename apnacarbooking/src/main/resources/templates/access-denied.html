@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied - 403</title>
+    <style>
+        body {
+            background-color: #f7fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .icon {
+            font-size: 60px;
+            color: #e53e3e;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .btn-back {
+            display: inline-block;
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #2b6cb0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🚫</div>
+        <h1>403 - Access Denied</h1>
+        <p>
+            Oops! It looks like you don't have permission to access the <strong>Admin Dashboard</strong>. 
+            This area is reserved for authorized administrators only.
+        </p>
+        <a th:href="@{/home}" class="btn-back">Take Me Home</a>
+    </div>
+
+</body>
+</html>

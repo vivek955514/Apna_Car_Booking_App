@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Car</title>
+    <link rel="stylesheet" th:href="@{/customcss/editforms.css}">
+</head>
+<body class="edit-body">
+
+<div class="edit-card">
+    <h2 class="edit-title">Edit Car Inventory</h2>
+    <a href="/admin/dashboard" class="home-link">← ADMIN HOME</a>
+
+    <div th:if="${msg}" class="alert-success" th:text="${msg}"></div>
+
+    <form action="/admin/updateCar" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${car.id}">
+
+        <div class="current-image-wrapper">
+            <p>Current Car Preview</p>
+            <img th:src="@{'/mycar/' + ${car.carImage}}" alt="Car Image" class="preview-img">
+        </div>
+
+        <div class="form-section">
+            <label>Change Car Image (optional)</label>
+            <input type="file" name="carImage" accept="image/*" class="admin-file">
+        </div>
+
+        <div class="form-section">
+            <label>Category</label>
+            <select name="category" class="admin-select" required>
+                <option value="">Select Category</option>
+                <option value="Economy" th:selected="${car.category == 'Economy'}">Economy</option>
+                <option value="Standard" th:selected="${car.category == 'Standard'}">Standard</option>
+                <option value="Lux" th:selected="${car.category == 'Lux'}">Lux</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label>Car Name</label>
+            <input type="text" name="carName" class="admin-input" th:value="${car.carName}" required>
+        </div>
+
+        <div class="form-section">
+            <label>Brand</label>
+            <input type="text" name="brand" class="admin-input" th:value="${car.brand}" required>
+        </div>
+
+        <div class="form-section">
+            <label>Model / Year</label>
+            <input type="text" name="model" class="admin-input" th:value="${car.model}" required>
+        </div>
+
+        <div class="form-section">
+            <label>Price Per Day ($)</label>
+            <input type="number" name="price" class="admin-input" th:value="${car.price}" required>
+        </div>
+
+        <div class="form-section">
+            <label>Description</label>
+            <textarea name="description" class="admin-textarea" rows="3" th:text="${car.description}"></textarea>
+        </div>
+
+        <div class="form-section">
+            <label>Availability Status</label>
+            <select name="status" class="admin-select" required>
+                <option value="Available" th:selected="${car.status == 'Available'}">Available</option>
+                <option value="Booked" th:selected="${car.status == 'Booked'}">Booked</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-update-action">Save Changes</button>
+    </form>
+</div>
+
+</body>
+</html>

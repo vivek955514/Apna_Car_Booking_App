@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Service</title>
+    <link rel="stylesheet" th:href="@{/customcss/addform.css}">
+</head>
+<body class="admin-body">
+
+    <div class="service-card-container">
+        <h2 class="admin-title-main">Add New Service</h2>
+        <a href="dashboard" class="nav-back-link">← BACK TO ADMIN HOME</a>
+
+        <div th:if="${msg}" class="status-alert-box" th:text="${msg}"></div>
+
+        <form action="addService" method="post" enctype="multipart/form-data" class="service-form-layout">
+            
+            <div class="field-wrapper">
+                <label class="input-label-text" for="serviceImage">Service Thumbnail</label>
+                <input type="file" id="serviceImage" name="image" accept="image/*" class="file-upload-input" required>
+            </div>
+
+            <div class="field-wrapper">
+                <label class="input-label-text" for="serviceTitle">Service Heading</label>
+                <input type="text" id="serviceTitle" name="title" class="text-field-input" placeholder="e.g., Luxury Car Rental" required>
+            </div>
+
+            <div class="field-wrapper">
+                <label class="input-label-text" for="serviceDescription">Service Details</label>
+                <textarea id="serviceDescription" name="description" class="textarea-field-input" rows="4" placeholder="Describe the service offerings..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-action-btn">Register Service</button>
+        </form>
+    </div>
+
+</body>
+</html>

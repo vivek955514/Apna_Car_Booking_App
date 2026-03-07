@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="/customcss/style.css">
+</head>
+<body>
+       
+       
+<div class="container">
+    <h2>Read All Bookings</h2>
+    <a href="dashboard" class="btn-home">← ADMIN HOME</a>
+    
+    <div th:if="${message}" class="msg" th:text="${message}"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th> <th>NAME</th> <th>EMAIL</th> <th>FROM</th> <th>TO</th>
+                <th>DATE</th> <th>TIME</th> <th>COMFORT</th> <th>ADULT</th>  <th>CHILDREN</th> <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="b : ${allBooking}">
+                <td th:text="${b.bookingId}"></td>
+                <td th:text="${b.name}"></td>
+                <td th:text="${b.email}"></td>
+                <td th:text="${b.from}"></td>
+                <td th:text="${b.to}"></td>
+                <td th:text="${b.date}"></td>
+                <td th:text="${b.time}"></td>
+                <td th:text="${b.comfort}"></td>
+                <td th:text="${b.adult}"></td>
+                <td th:text="${b.children}"></td>
+                <td>
+                    <a th:href="@{/admin/cancelCarBooking/{id}(id=${b.bookingId})}" 
+                       class="btn-action btn-delete"
+                       onclick="return confirm('Cancel this booking?')">CANCEL<br> BOOKING</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

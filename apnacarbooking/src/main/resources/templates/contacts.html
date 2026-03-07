@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Contacts</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<link rel="icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.js"></script>
+<script src="js/script.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/jquery.ui.totop.js"></script>
+<script src="js/jquery.equalheights.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/TMForm.js"></script>
+<script>
+	$(document).ready(function() {
+		$().UItoTop({
+			easingType : 'easeOutQuart'
+		});
+	});
+</script>
+
+
+</head>
+<body class="" id="top">
+	<div class="main">
+
+		<!--==============================header-start=================================-->
+		<div th:insert="~{fragments/header.html}"></div>
+
+		<!--==============================header=================================-->
+
+		<!--==============================Content=================================-->
+		<div class="content">
+			<div class="ic"></div>
+			<div class="container_12">
+				<div class="grid_12">
+					<h3>Find Us</h3>
+					<div class="map">
+						<figure>
+						
+						
+						    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7007.175783145463!2d77.30517591264324!3d28.582135273731154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce45e3eccb8a7%3A0xd5eb60e62b19e6ba!2sSector%2015%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1772218746688!5m2!1sen!2sin" style="border: 0" ></iframe>
+							
+						</figure>
+					</div>
+				</div>
+				<div class="grid_5">
+					<h3>Contact Info</h3>
+					<div class="map">
+						<div class="text1 color2">We’re here to help you with all
+							your travel needs. Contact Apna Car Booking for quick support,
+							bookings, and service-related inquiries.</div>
+					</div>
+					<p>
+						Our customer support team is available<strong>24/7</strong> to
+						assist you with bookings, pricing, or trip-related questions. Your
+						comfort and convenience are our top priority.
+					</p>
+					<p>Need help with planning your trip or customizing your ride?
+						Our support team is always ready to guide you.</p>
+					<address>
+						<dl>
+							<dt>
+								Apna Car Booking <br> 123 Main Road,<br> Noida, Uttar
+								Pradesh-201301
+							</dt>
+							<dd>
+								<span>Telephone:</span> +91 95551 49015
+							</dd>
+							<dd>
+								<span>WhatsApp:</span> +91 95551 49015
+							</dd>
+							<dd>
+								E-mail: <a href="#" class="color1">raic77255@gmail.com</a>
+							</dd>
+						</dl>
+					</address>
+				</div>
+			</div>
+			<div class="grid_6 prefix_1">
+				<h2>Contact Form</h2>
+
+				<div class="error">
+					<h3 th:text="${message}" style="color: green;"></h3>
+				</div>
+
+				<form id="form" th:action="@{/contactform}"
+					th:object="${contactForm}" method="post">
+
+					<!-- NAME -->
+					<label class="name"> <input type="text" th:field="*{name}"
+						name="name" th:value="${contactForm.name}" placeholder="Name:" />
+						<span class="error" th:if="${#fields.hasErrors('name')}"
+						th:errors="*{name}"></span>
+					</label>
+
+					<!-- EMAIL -->
+					<label class="email"> <input type="text" name="email"
+						th:value="${contactForm.email}" th:field="*{email}"
+						placeholder="E-mail:" /> <span class="error"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+					</label>
+
+					<!-- PHONE -->
+					<label class="phone"> <input type="text"
+						th:value="${contactForm.phone}" name="phone" th:field="*{phone}"
+						placeholder="Phone:" /> <span class="error"
+						th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+					</label>
+
+					<!-- MESSAGE -->
+					<label class="message"> <textarea
+							th:text="${contactForm.message}" name="message"
+							th:field="*{message}" placeholder="Message:"></textarea> <span
+						class="error" th:if="${#fields.hasErrors('message')}"
+						th:errors="*{message}"></span>
+					</label>
+
+					<div class="btns">
+						<button class="btn" type="submit">Send</button>
+						<a href="#" data-type="reset" class="btn">Clear</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	</div>
+	<!--==============================footer=================================-->
+
+	<div th:insert="~{fragments/footer.html}"></div>
+	<!--==============================footer=================================-->
+
+</body>
+</html>
