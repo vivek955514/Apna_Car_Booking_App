@@ -13,7 +13,7 @@
 
         <div th:if="${msg}" class="status-alert-box" th:text="${msg}"></div>
 
-        <form action="addService" method="post" enctype="multipart/form-data" class="service-form-layout">
+        <form th:action="@{/admin/addService}" method="post" enctype="multipart/form-data" class="service-form-layout">
             
             <div class="field-wrapper">
                 <label class="input-label-text" for="serviceImage">Service Thumbnail</label>

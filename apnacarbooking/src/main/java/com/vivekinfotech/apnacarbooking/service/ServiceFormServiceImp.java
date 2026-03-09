@@ -29,24 +29,38 @@ public class ServiceFormServiceImp implements ServiceFormService {
 	@Override
 	public ServiceAddForm addService(ServiceAddForm serviceAddForm, MultipartFile multipartFile) throws Exception {
 
-		ServiceAddForm save = null;
-		try {
+	    ServiceAddForm save = null;
 
-			save = serviceFormCrud.save(serviceAddForm);
-			if (save != null) {
+	    try {
 
-				String path = "C:\\SpringPractice\\apnacarbooking\\src\\main\\resources\\static\\myservice\\"
-						+ multipartFile.getOriginalFilename();
-				byte[] bytes = multipartFile.getBytes();
-				FileOutputStream fos = new FileOutputStream(path);
-				fos.write(bytes);
-			}
+	        save = serviceFormCrud.save(serviceAddForm);
 
-		} catch (Exception e) {
-			save = null;
-			throw e;
-		}
-		return save;
+	        if (save != null && !multipartFile.isEmpty()) {
+
+	            // Dynamic upload directory
+	            String uploadDir = System.getProperty("user.dir") + "/uploads/services/";
+
+	            File dir = new File(uploadDir);
+	            if (!dir.exists()) {
+	                dir.mkdirs();
+	            }
+
+	            String fileName = multipartFile.getOriginalFilename();
+	            String filePath = uploadDir + fileName;
+
+	            FileOutputStream fos = new FileOutputStream(filePath);
+	            fos.write(multipartFile.getBytes());
+	            fos.close();
+
+	            serviceAddForm.setImage(fileName);
+	        }
+
+	    } catch (Exception e) {
+	        save = null;
+	        throw e;
+	    }
+
+	    return save;
 	}
 
 	@Override
