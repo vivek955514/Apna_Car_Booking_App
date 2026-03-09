@@ -124,8 +124,7 @@ public class AdminController {
 
 	@InitBinder
 	public void stopBinding(WebDataBinder webDataBinder) {
-
-		webDataBinder.setDisallowedFields("image");
+	    webDataBinder.setDisallowedFields("image","carImage");
 	}
 
 	@PostMapping("addService")
@@ -247,11 +246,7 @@ public class AdminController {
 		return "admin/addcar";
 	}
 
-	@InitBinder
-	public void stopBindingImage(WebDataBinder webDataBinder) {
-
-		webDataBinder.setDisallowedFields("carImage");
-	}
+	
 
 	@PostMapping("addCar")
 	public String addNewCar(@ModelAttribute CarAddForm carAddForm,
@@ -307,11 +302,7 @@ public class AdminController {
 	}
 	
 	
-	@InitBinder
-	public void stopBindingImg(WebDataBinder webDataBinder) {
-
-		webDataBinder.setDisallowedFields("carImage");
-	}
+	
 
 	@PostMapping("updateCar")
 	public String updateCar(@ModelAttribute CarAddForm carAddForm,
