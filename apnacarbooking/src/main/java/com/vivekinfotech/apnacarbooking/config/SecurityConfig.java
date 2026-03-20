@@ -48,7 +48,7 @@ public class SecurityConfig {
 	        ).permitAll()
 
 	        // 4. Static Resources
-	        .requestMatchers("/css/**", "/js/**", "/images/**", "/mycar/**", "/customcss/**")
+	        .requestMatchers("/css/**", "/js/**", "/images/**", "/mycar/**","/myservice/**", "/customcss/**")
 	        .permitAll()
 
 	        .anyRequest().authenticated()
